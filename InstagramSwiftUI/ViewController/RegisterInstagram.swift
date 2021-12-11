@@ -13,71 +13,76 @@ struct RegisterInstagram: View {
     @State var fullName: String = ""
     @State var userName: String = ""
     var body: some View {
-        ZStack{
-            LinearGradient(gradient: Gradient(colors: [.purple, .blue]), startPoint: .top, endPoint: .bottom)
-                .edgesIgnoringSafeArea(.all)
-            VStack{
-                Image("plus_photo")
-                    .renderingMode(.template)
-                    .foregroundColor(.white)
-                    .padding()
-                Group{
-                    VStack( spacing: 20){
-                        TextField("Email", text: $email)
-                            .frame( height: 30, alignment: .center)
-                            .padding()
-                            .background(Color(#colorLiteral(red: 124/255, green: 115/255, blue: 238/255, alpha: 1)))
-                            .accentColor(.white)
-                            .cornerRadius(10.0)
-                            .font(.system(size: 20, weight: .regular, design: .default))
-                            .foregroundColor(.white)
-                            .disableAutocorrection(true)
-                        TextField("Password", text: $password)
-                            .frame( height: 30, alignment: .center)
-                            .padding()
-                            .background(Color(#colorLiteral(red: 91/255, green: 123/255, blue: 235/255, alpha: 1)))
-                            .accentColor(.white)
-                            .cornerRadius(10.0)
-                            .font(.system(size: 20, weight: .regular, design: .default))
-                            .foregroundColor(.white)
-                            .disableAutocorrection(true)
-                        TextField("Full Name", text: $fullName)
-                            .frame( height: 30, alignment: .center)
-                            .padding()
-                            .background(Color(#colorLiteral(red: 91/255, green: 123/255, blue: 235/255, alpha: 1)))
-                            .accentColor(.white)
-                            .cornerRadius(10.0)
-                            .font(.system(size: 20, weight: .regular, design: .default))
-                            .foregroundColor(.white)
-                            .disableAutocorrection(true)
-                        TextField("User Name", text: $userName)
-                            .frame( height: 30, alignment: .center)
-                            .padding()
-                            .background(Color(#colorLiteral(red: 91/255, green: 123/255, blue: 235/255, alpha: 1)))
-                            .accentColor(.white)
-                            .cornerRadius(10.0)
-                            .font(.system(size: 20, weight: .regular, design: .default))
-                            .foregroundColor(.white)
-                            .disableAutocorrection(true)
-                            .preferredColorScheme(.dark)
-                        Button(action: {print("sign in")}) {
-                            LoginButtonContena()
+//        NavigationView{
+            ZStack{
+                LinearGradient(gradient: Gradient(colors: [.purple, .blue]), startPoint: .top, endPoint: .bottom)
+                    .edgesIgnoringSafeArea(.all)
+                VStack{
+                    Image("plus_photo")
+                        .renderingMode(.template)
+                        .foregroundColor(.white)
+                        .padding()
+                    Group{
+                        VStack( spacing: 20){
+                            TextField("Email", text: $email)
+                                .frame( height: 30, alignment: .center)
+                                .padding()
+                                .background(Color(#colorLiteral(red: 124/255, green: 115/255, blue: 238/255, alpha: 1)))
+                                .accentColor(.white)
+                                .cornerRadius(10.0)
+                                .font(.system(size: 20, weight: .regular, design: .default))
+                                .foregroundColor(.white)
+                                .disableAutocorrection(true)
+                            TextField("Password", text: $password)
+                                .frame( height: 30, alignment: .center)
+                                .padding()
+                                .background(Color(#colorLiteral(red: 91/255, green: 123/255, blue: 235/255, alpha: 1)))
+                                .accentColor(.white)
+                                .cornerRadius(10.0)
+                                .font(.system(size: 20, weight: .regular, design: .default))
+                                .foregroundColor(.white)
+                                .disableAutocorrection(true)
+                            TextField("Full Name", text: $fullName)
+                                .frame( height: 30, alignment: .center)
+                                .padding()
+                                .background(Color(#colorLiteral(red: 91/255, green: 123/255, blue: 235/255, alpha: 1)))
+                                .accentColor(.white)
+                                .cornerRadius(10.0)
+                                .font(.system(size: 20, weight: .regular, design: .default))
+                                .foregroundColor(.white)
+                                .disableAutocorrection(true)
+                            TextField("User Name", text: $userName)
+                                .frame( height: 30, alignment: .center)
+                                .padding()
+                                .background(Color(#colorLiteral(red: 91/255, green: 123/255, blue: 235/255, alpha: 1)))
+                                .accentColor(.white)
+                                .cornerRadius(10.0)
+                                .font(.system(size: 20, weight: .regular, design: .default))
+                                .foregroundColor(.white)
+                                .disableAutocorrection(true)
+                                .preferredColorScheme(.dark)
+                            
+                            Button(action: {print("sign in")}) {
+                                LoginButtonContena()
+                            }
                         }
                     }
+                    .padding()
+                    HStack{
+                        Text("Already have an Account?")
+                            .foregroundColor(.white)
+                        NavigationLink(destination: LoginInstagram()) {
+                            Text("SIGN IN")
+                                .foregroundColor(.white)
+                                .bold()
+                        }
+                    }.frame(maxHeight:.infinity, alignment: .bottom)
+                    .padding()
+                    Spacer()
                 }
-                .padding()
-                HStack{
-                    Text("Already have an Account?")
-                        .foregroundColor(.white)
-                    Button(action: {print("ok")}) {
-                        SignInButtonContena()
-                    }
-                    
-                }.frame(maxHeight:.infinity, alignment: .bottom)
-                .padding()
-                Spacer()
             }
-        }
+       // }
+        
     }
 }
 

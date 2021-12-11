@@ -12,71 +12,89 @@ struct LoginInstagram: View {
     @State var Password: String = ""
     @State var authenticationDidFailEmail: Bool = true
     var body: some View {
-        ZStack{
-            LinearGradient(gradient: Gradient(colors: [.purple, .blue]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
-            VStack{
-                Logo()
-                VStack(spacing: 25){
-                    //EmailTextField(email: $Email)
-                    TextField("Email", text: $Email, onEditingChanged: { isChanged in
-                        if !isChanged {
-                            if self.textFieldValidatorEmail(self.Email) {
-                                self.authenticationDidFailEmail = true
-                            } else {
-                                self.authenticationDidFailEmail = false
-                                self.Email = ""
+        NavigationView{
+           
+            ZStack{
+                LinearGradient(gradient: Gradient(colors: [.purple, .blue]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
+                VStack{
+                    Logo()
+                    VStack(spacing: 25){
+                        //EmailTextField(email: $Email)
+                        TextField("Email", text: $Email, onEditingChanged: { isChanged in
+                            if !isChanged {
+                                if self.textFieldValidatorEmail(self.Email) {
+                                    self.authenticationDidFailEmail = true
+                                } else {
+                                    self.authenticationDidFailEmail = false
+                                    self.Email = ""
+                                }
                             }
-                        }
-                    })
-                        .frame( height: 30, alignment: .center)
-                        .padding()
-                        .background(Color.gray)
-                        .accentColor(.white)
-                        .cornerRadius(10.0)
-                        .font(.system(size: 20, weight: .regular, design: .default))
-                        .foregroundColor(.white)
-                        .disableAutocorrection(true)
-                    if !self.authenticationDidFailEmail{
-                        Text("Email is Not Valid")
-                            .offset(y: -20)
-                            .foregroundColor(.red)
-                    }
-                    PasswordTextfield(password: $Password)
-                    if !self.authenticationDidFailEmail{
-                        Text("passs sai")
-                            .offset(y: -20)
-                            .foregroundColor(.red)
-                    }
-                    Button(action: {print("acttion")}) {
-                        LoginButtonConten()
-                    }
-                    .padding()
-                    HStack{
-                        Text("Forgot your password? Get help.")
+                        })
+                            .frame( height: 30, alignment: .center)
+                            .padding()
+                            .background(Color.gray)
+                            .accentColor(.white)
+                            .cornerRadius(10.0)
+                            .font(.system(size: 20, weight: .regular, design: .default))
                             .foregroundColor(.white)
-                            .font(.headline)
-                        Button(action: {print("sinh in")}) {
-                            SingInButtonConten()
+                            .disableAutocorrection(true)
+                        if !self.authenticationDidFailEmail{
+                            Text("Email is Not Valid")
+                                .offset(y: -20)
+                                .foregroundColor(.red)
                         }
-                    }
-                    
-                    VStack(alignment: .center, spacing: 10){
-                        HStack(spacing: 5){
-                            Text("Don't have an account?")
+                        PasswordTextfield(password: $Password)
+                        if !self.authenticationDidFailEmail{
+                            Text("passs sai")
+                                .offset(y: -20)
+                                .foregroundColor(.red)
+                        }
+                        NavigationLink(destination: HomeTabbar(), label: {
+                            Text("Login")
+                                //.padding()
+                                .frame(maxWidth: .infinity, maxHeight: 60)
+                                .background(Color.gray)
+                                .foregroundColor(Color.white)
+                                .cornerRadius(20)
+                                
+                        })
+
+                        .padding()
+                        HStack{
+                            Text("Forgot your password? Get help.")
                                 .foregroundColor(.white)
                                 .font(.headline)
-                                .padding()
-                            Button(action: {print("acction")}) {
-                                SingUpButtonConten()
-                            }
+                            NavigationLink(destination: RegisterInstagram(), label: {
+                                Text("SIGN IN")
+                                    .foregroundColor(Color.white)
+                                    .bold()
+                            })
+                           
                         }
-                        .frame( maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                        
+                        VStack(alignment: .center, spacing: 10){
+                            HStack(){
+                                Text("Don't have an account?")
+                                    .foregroundColor(.white)
+                                    .font(.headline)
+                                    //.padding()
+                                NavigationLink(destination: RegisterInstagram()) {
+                                    Text("SIGN UP")
+                                        .foregroundColor(.white)
+                                        .bold()
+                                }
+                            }
+                            .frame( maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                        }
                     }
+                    .padding()
+                    Spacer()
                 }
-                .padding()
-                Spacer()
             }
+            //.navigationBarHidden(true)
         }
+        
+        
     }
     func textFieldValidatorEmail(_ email: String) -> Bool {
         if email.count > 64 {
@@ -114,15 +132,6 @@ struct SingUpButtonConten: View {
             .foregroundColor(.white)
     }
 }
-
-struct SingInButtonConten: View {
-    var body: some View {
-        Text("SIGN IN")
-            .font(.headline)
-            .foregroundColor(.white)
-    }
-}
-
 
 struct Logo: View {
     var body: some View {
