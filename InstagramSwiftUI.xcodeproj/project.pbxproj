@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB59DB2D2765A065000F6ACA /* TextfieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59DB2C2765A065000F6ACA /* TextfieldExtension.swift */; };
+		CB59DB2F2765A657000F6ACA /* EntryField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59DB2E2765A657000F6ACA /* EntryField.swift */; };
 		CBA9BB9327623AE1001FC800 /* InstagramSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA9BB9227623AE1001FC800 /* InstagramSwiftUIApp.swift */; };
 		CBA9BB9A27623AE3001FC800 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBA9BB9927623AE3001FC800 /* Preview Assets.xcassets */; };
 		CBA9BBA627623B54001FC800 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA9BBA527623B54001FC800 /* HomeView.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB59DB2C2765A065000F6ACA /* TextfieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldExtension.swift; sourceTree = "<group>"; };
+		CB59DB2E2765A657000F6ACA /* EntryField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryField.swift; sourceTree = "<group>"; };
 		CBA9BB8F27623AE1001FC800 /* InstagramSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA9BB9227623AE1001FC800 /* InstagramSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramSwiftUIApp.swift; sourceTree = "<group>"; };
 		CBA9BB9927623AE3001FC800 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -46,6 +50,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB59DB2B2765A049000F6ACA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CB59DB2E2765A657000F6ACA /* EntryField.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		CBA9BB8627623AE1001FC800 = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +98,7 @@
 		CBA9BBA027623AF9001FC800 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				CB59DB2B2765A049000F6ACA /* Extension */,
 				CBA9BB9227623AE1001FC800 /* InstagramSwiftUIApp.swift */,
 				CBA9BBAD27623BBF001FC800 /* LoginInstagram.swift */,
 				CBA9BBAF27623BDE001FC800 /* RegisterInstagram.swift */,
@@ -99,6 +112,7 @@
 		CBA9BBA127623B04001FC800 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CB59DB2C2765A065000F6ACA /* TextfieldExtension.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -207,6 +221,8 @@
 				CBA9BBB027623BDE001FC800 /* RegisterInstagram.swift in Sources */,
 				CBA9BB9327623AE1001FC800 /* InstagramSwiftUIApp.swift in Sources */,
 				CBA9BBA827623B6B001FC800 /* Bookmark.swift in Sources */,
+				CB59DB2D2765A065000F6ACA /* TextfieldExtension.swift in Sources */,
+				CB59DB2F2765A657000F6ACA /* EntryField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

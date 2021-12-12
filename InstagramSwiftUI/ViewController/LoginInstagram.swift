@@ -6,60 +6,34 @@
 //
 
 import SwiftUI
-
+import Combine
 struct LoginInstagram: View {
-    @State var Email: String = ""
-    @State var Password: String = ""
+   @StateObject private var loginRegister = LoginRegisterViewModel()
     @State var authenticationDidFailEmail: Bool = true
     var body: some View {
         NavigationView{
-           
             ZStack{
                 LinearGradient(gradient: Gradient(colors: [.purple, .blue]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 VStack{
                     Logo()
-                    VStack(spacing: 25){
-                        //EmailTextField(email: $Email)
-                        TextField("Email", text: $Email, onEditingChanged: { isChanged in
-                            if !isChanged {
-                                if self.textFieldValidatorEmail(self.Email) {
-                                    self.authenticationDidFailEmail = true
-                                } else {
-                                    self.authenticationDidFailEmail = false
-                                    self.Email = ""
-                                }
-                            }
-                        })
-                            .frame( height: 30, alignment: .center)
-                            .padding()
-                            .background(Color.gray)
-                            .accentColor(.white)
-                            .cornerRadius(10.0)
-                            .font(.system(size: 20, weight: .regular, design: .default))
-                            .foregroundColor(.white)
-                            .disableAutocorrection(true)
-                        if !self.authenticationDidFailEmail{
-                            Text("Email is Not Valid")
-                                .offset(y: -20)
-                                .foregroundColor(.red)
-                        }
-                        PasswordTextfield(password: $Password)
-                        if !self.authenticationDidFailEmail{
-                            Text("passs sai")
-                                .offset(y: -20)
-                                .foregroundColor(.red)
-                        }
-                        NavigationLink(destination: HomeTabbar(), label: {
+                        .offset(y: -130)
+                    VStack(){
+                        EntryField(placeHolder: "Email Address", prompt: loginRegister.emailPrompt, fielf: $loginRegister.EmailL)
+                        EntryField( placeHolder: "Password Address", prompt: loginRegister.PasswordPrompt, fielf: $loginRegister.Password, isSecure: true)
+                        
+                        Button {
+                            loginRegister.login()
+                        } label: {
                             Text("Login")
-                                //.padding()
-                                .frame(maxWidth: .infinity, maxHeight: 60)
-                                .background(Color.gray)
-                                .foregroundColor(Color.white)
-                                .cornerRadius(20)
-                                
-                        })
-
+                        }
                         .padding()
+                        .frame(height: 60)
+                        .frame(maxWidth: .infinity,alignment: .center)
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .background(Color(#colorLiteral(red: 124/255, green: 115/255, blue: 238/255, alpha: 1)))
+                        .opacity(loginRegister.canSubmit ? 1 : 0.6)
+                        .disabled(!loginRegister.canSubmit)
                         HStack{
                             Text("Forgot your password? Get help.")
                                 .foregroundColor(.white)
@@ -71,13 +45,13 @@ struct LoginInstagram: View {
                             })
                            
                         }
+                        .offset(y: 20)
                         
                         VStack(alignment: .center, spacing: 10){
                             HStack(){
                                 Text("Don't have an account?")
                                     .foregroundColor(.white)
                                     .font(.headline)
-                                    //.padding()
                                 NavigationLink(destination: RegisterInstagram()) {
                                     Text("SIGN UP")
                                         .foregroundColor(.white)
@@ -86,15 +60,14 @@ struct LoginInstagram: View {
                             }
                             .frame( maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
                         }
+                        .offset(y: 60)
                     }
+                    .offset(y: -60)
                     .padding()
                     Spacer()
                 }
             }
-            //.navigationBarHidden(true)
         }
-        
-        
     }
     func textFieldValidatorEmail(_ email: String) -> Bool {
         if email.count > 64 {

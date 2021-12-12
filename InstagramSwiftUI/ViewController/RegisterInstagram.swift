@@ -8,60 +8,24 @@
 import SwiftUI
 
 struct RegisterInstagram: View {
-    @State var email: String = ""
-    @State var password: String = ""
-    @State var fullName: String = ""
-    @State var userName: String = ""
+    @StateObject private var register = LoginRegisterViewModel()
     var body: some View {
-//        NavigationView{
-            ZStack{
+        ZStack{
                 LinearGradient(gradient: Gradient(colors: [.purple, .blue]), startPoint: .top, endPoint: .bottom)
                     .edgesIgnoringSafeArea(.all)
+                    
                 VStack{
                     Image("plus_photo")
                         .renderingMode(.template)
                         .foregroundColor(.white)
                         .padding()
                     Group{
-                        VStack( spacing: 20){
-                            TextField("Email", text: $email)
-                                .frame( height: 30, alignment: .center)
-                                .padding()
-                                .background(Color(#colorLiteral(red: 124/255, green: 115/255, blue: 238/255, alpha: 1)))
-                                .accentColor(.white)
-                                .cornerRadius(10.0)
-                                .font(.system(size: 20, weight: .regular, design: .default))
-                                .foregroundColor(.white)
-                                .disableAutocorrection(true)
-                            TextField("Password", text: $password)
-                                .frame( height: 30, alignment: .center)
-                                .padding()
-                                .background(Color(#colorLiteral(red: 91/255, green: 123/255, blue: 235/255, alpha: 1)))
-                                .accentColor(.white)
-                                .cornerRadius(10.0)
-                                .font(.system(size: 20, weight: .regular, design: .default))
-                                .foregroundColor(.white)
-                                .disableAutocorrection(true)
-                            TextField("Full Name", text: $fullName)
-                                .frame( height: 30, alignment: .center)
-                                .padding()
-                                .background(Color(#colorLiteral(red: 91/255, green: 123/255, blue: 235/255, alpha: 1)))
-                                .accentColor(.white)
-                                .cornerRadius(10.0)
-                                .font(.system(size: 20, weight: .regular, design: .default))
-                                .foregroundColor(.white)
-                                .disableAutocorrection(true)
-                            TextField("User Name", text: $userName)
-                                .frame( height: 30, alignment: .center)
-                                .padding()
-                                .background(Color(#colorLiteral(red: 91/255, green: 123/255, blue: 235/255, alpha: 1)))
-                                .accentColor(.white)
-                                .cornerRadius(10.0)
-                                .font(.system(size: 20, weight: .regular, design: .default))
-                                .foregroundColor(.white)
-                                .disableAutocorrection(true)
-                                .preferredColorScheme(.dark)
-                            
+                        VStack(){
+                            EntryField(placeHolder: "Email", prompt: "", fielf: $register.EmailL, isSecure: false)
+                                .background(Color.gray)
+                            EntryField(placeHolder: "Password", prompt: "", fielf: $register.Password, isSecure: true)
+                            EntryField(placeHolder: "Full Name", prompt: "", fielf: $register.fullName, isSecure: false)
+                            EntryField(placeHolder: "User Name", prompt: "", fielf: $register.userName, isSecure: false)
                             Button(action: {print("sign in")}) {
                                 LoginButtonContena()
                             }
@@ -81,7 +45,6 @@ struct RegisterInstagram: View {
                     Spacer()
                 }
             }
-       // }
         
     }
 }
@@ -97,7 +60,6 @@ struct SignInButtonContena: View {
         Text("Sign In")
             .font(.headline)
             .foregroundColor(.white)
-
     }
 }
 

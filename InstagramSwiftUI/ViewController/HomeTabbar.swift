@@ -19,10 +19,10 @@ struct HomeTabbar: View {
                 Bookmark()
                     .font(.system(size: 30, weight: .bold, design: .rounded))
                     .tag(1)
-                Setting()
+                Like()
                     .font(.system(size: 30, weight: .bold, design: .rounded))
                     .tag(2)
-                Like()
+                Setting()
                     .font(.system(size: 30, weight: .bold, design: .rounded))
                     .tag(3)
             }

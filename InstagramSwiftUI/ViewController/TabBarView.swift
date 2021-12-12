@@ -9,7 +9,6 @@ import SwiftUI
 
 struct TabBarView: View {
     @Binding var selection: Int
-
     @Namespace private var currentTab
     var body: some View {
         HStack(alignment: .bottom){
